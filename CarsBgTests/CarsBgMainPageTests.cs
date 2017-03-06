@@ -48,19 +48,5 @@ namespace CarsBg_HomePage_Tests
 
             Assert.AreEqual(expectedPageTitle, actualPageTitle);
         }
-
-        //[Ignore]
-        [TestMethod]
-        public void ClickOnSearchButton()
-        {
-            string expectedPageTitle = "cars.bg - Търсите Автомобили? Нови, buyback, лизингови и употребявани коли";
-            var actualPageTitle = Driver.Title;
-
-            CarsBgHomePageClass.SearchButtonElement.Click();
-
-            Waiter.Until(ExpectedConditions.TitleIs("asd"));
-
-            Assert.AreEqual(expectedPageTitle, actualPageTitle);
-        }
     }
 }
