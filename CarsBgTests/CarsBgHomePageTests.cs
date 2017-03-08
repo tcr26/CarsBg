@@ -14,14 +14,14 @@ namespace CarsBg_HomePage_Tests
     {
         public CarsBgHomePageTests()
         {
-            CarsBgHomePageClass = new CarsBgHomePage();
+            HomePage = new CarsBgHomePage();
             Driver = new FirefoxDriver();
             Driver.Manage().Window.Maximize();
             Waiter = new WebDriverWait(Driver, TimeSpan.FromSeconds(20));
-            Driver.Navigate().GoToUrl(CarsBgHomePageClass.urlToCarsBgHomePage);
+            Driver.Navigate().GoToUrl(HomePage.urlToCarsBgHomePage);
         }
 
-        public CarsBgHomePage CarsBgHomePageClass { get; set; }
+        public CarsBgHomePage HomePage { get; set; }
 
         public IWebDriver Driver { get; set; }
 
@@ -30,7 +30,7 @@ namespace CarsBg_HomePage_Tests
         [TestInitialize]
         public void TestInit()
         {
-            PageFactory.InitElements(Driver, CarsBgHomePageClass);
+            PageFactory.InitElements(Driver, HomePage);
         }
 
         [TestCleanup]
@@ -48,5 +48,21 @@ namespace CarsBg_HomePage_Tests
 
             Assert.AreEqual(expectedPageTitle, actualPageTitle);
         }
+
+        //[Ignore]
+        //[TestMethod]
+        //public void SearchForAutomobile()
+        //{
+        //    CarsBgHomePage.ChooseAutomobileType("Ремаркета");
+
+        //    Waiter.Until(ExpectedConditions.UrlToBe("http://www.cars.bg/?go=home&p=trailers"));
+
+        //    CarsBgHomePage.select(CarsBgHomePage.FilterByAutomobilesTypes);
+
+        //    var expectedChooseType = "Ремаркета";
+        //    var actualChooseType = CarsBgHomePage.SelectedCoupeType;
+
+        //    Assert.AreEqual(expectedChooseType, actualChooseType);
+        //}
     }
 }

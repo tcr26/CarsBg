@@ -2,7 +2,6 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support;
 using OpenQA.Selenium.Support.PageObjects;
-using OpenQA.Selenium.Support.UI;
 
 namespace CarsBgPages_HomePage
 {
@@ -15,6 +14,8 @@ namespace CarsBgPages_HomePage
 
         [FindsBy(How = How.Id, Using = "section")]
         public IWebElement FilterByAutomobilesTypes { get; set; }
+
+        public string SelectedCoupeType { get; set; }
 
         [FindsBy(How = How.Id, Using = "categoryId")]
         public IWebElement FilterByCoupes { get; set; }
@@ -63,5 +64,34 @@ namespace CarsBgPages_HomePage
 
         [FindsBy(How = How.CssSelector, Using = "html body table tbody tr td table tbody tr td table tbody tr td div#Container form#Form div.box-rounded table tbody tr td table tbody tr td center div.bBoxT div.bBox a.buttonPressedLink b")]
         public IWebElement SearchButtonElement { get; set; }
+
+        [FindsBy(How = How.CssSelector, Using = "html body table tbody tr td table tbody tr td table tbody tr td div#Container form#Form div.box-rounded table tbody tr td table tbody tr td a.link12orr")]
+        public IWebElement AdvancedSearchButtonElement { get; set; }
+
+        //public void ChooseAutomobileType(string autoType)
+        //{
+        //    SelectElement automobileType = new SelectElement(FilterByAutomobilesTypes);
+
+        //    FilterByAutomobilesTypes.Click();
+
+        //    automobileType.SelectByText(autoType);
+        //}
+
+        //public void ChooseAutomobileCoupeType(string coupeType)
+        //{
+        //    SelectElement coupe = new SelectElement(FilterByCoupes);
+
+        //    FilterByCoupes.Click();
+
+        //    coupe.SelectByText(coupeType);
+
+
+        //}
+
+        //public void select(IWebElement element)
+        //{
+        //    SelectElement asd = new SelectElement(element);
+        //    SelectedCoupeType = asd.SelectedOption.Text;
+        //}
     }
 }

@@ -61,7 +61,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CarsBgMainPageTests.cs" />
+    <Compile Include="CarsBgHomePageTests.cs" />
+    <Compile Include="CarsBgLoginFormTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
