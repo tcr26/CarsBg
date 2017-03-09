@@ -2,6 +2,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support;
 using OpenQA.Selenium.Support.PageObjects;
+using OpenQA.Selenium.Support.UI;
 
 namespace CarsBgPages_HomePage
 {
@@ -14,8 +15,6 @@ namespace CarsBgPages_HomePage
 
         [FindsBy(How = How.Id, Using = "section")]
         public IWebElement FilterByAutomobilesTypes { get; set; }
-
-        public string SelectedCoupeType { get; set; }
 
         [FindsBy(How = How.Id, Using = "categoryId")]
         public IWebElement FilterByCoupes { get; set; }
@@ -62,36 +61,25 @@ namespace CarsBgPages_HomePage
         [FindsBy(How = How.Id, Using = "filterOrderBy")]
         public IWebElement SortTheResultsBy { get; set; }
 
-        [FindsBy(How = How.CssSelector, Using = "html body table tbody tr td table tbody tr td table tbody tr td div#Container form#Form div.box-rounded table tbody tr td table tbody tr td center div.bBoxT div.bBox a.buttonPressedLink b")]
+        [FindsBy(How = How.CssSelector, Using = "html body table tbody tr td table tbody tr td table tbody tr td div#Container form#motoForm div.box-rounded table tbody tr td table tbody tr td div.bBoxT div.bBox")]
         public IWebElement SearchButtonElement { get; set; }
 
         [FindsBy(How = How.CssSelector, Using = "html body table tbody tr td table tbody tr td table tbody tr td div#Container form#Form div.box-rounded table tbody tr td table tbody tr td a.link12orr")]
         public IWebElement AdvancedSearchButtonElement { get; set; }
 
-        //public void ChooseAutomobileType(string autoType)
-        //{
-        //    SelectElement automobileType = new SelectElement(FilterByAutomobilesTypes);
+        [FindsBy(How = How.Id, Using = "searchstrings")]
+        public IWebElement SearchTermsElement { get; set; }
 
-        //    FilterByAutomobilesTypes.Click();
+        [FindsBy(How = How.CssSelector, Using = "table.tableListResults tbody tr th div")]
+        public IWebElement NumbersOfSearchResultsElement { get; set; }
 
-        //    automobileType.SelectByText(autoType);
-        //}
+        [FindsBy(How = How.XPath, Using = "/html/body/table[3]/tbody/tr[1]/td/form/table/tbody/tr/td[1]/table[4]/tbody/tr[2]/td/table/tbody/tr[2]/td")]
+        public IWebElement NoResultsFoundElement { get; set; }
 
-        //public void ChooseAutomobileCoupeType(string coupeType)
-        //{
-        //    SelectElement coupe = new SelectElement(FilterByCoupes);
-
-        //    FilterByCoupes.Click();
-
-        //    coupe.SelectByText(coupeType);
-
-
-        //}
-
-        //public void select(IWebElement element)
-        //{
-        //    SelectElement asd = new SelectElement(element);
-        //    SelectedCoupeType = asd.SelectedOption.Text;
-        //}
+        public void Select(IWebElement element, string option)
+        {
+            SelectElement selectedElement = new SelectElement(element);
+            selectedElement.SelectByText(option);
+        }
     }
 }
