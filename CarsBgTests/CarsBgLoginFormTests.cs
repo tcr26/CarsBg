@@ -5,10 +5,10 @@ using OpenQA.Selenium.Support;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Firefox;
-using CarsBgPages_HomePage;
-using CarsBgPages_LoginForm;
+using CarsBg_HomePage;
+using CarsBg_Login_Form;
 
-namespace CarsBgTests
+namespace CarsBg_Login_Form_Tests
 {
     [TestClass]
     public class CarsBgLoginFormTests

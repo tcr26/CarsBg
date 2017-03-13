@@ -4,14 +4,11 @@ using OpenQA.Selenium.Support;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
 
-namespace CarsBg_HomePage
+namespace CarsBgSearch_Results
 {
-    public class CarsBgHomePage
+    public class CarsBgSearchResults
     {
         public string urlToCarsBgHomePage = "http://www.cars.bg";
-
-        [FindsBy(How = How.CssSelector, Using = "html body table.site_top_head tbody tr td table tbody tr td a img")]
-        public IWebElement CarsBgLogoSignElement { get; set; }
 
         [FindsBy(How = How.Id, Using = "section")]
         public IWebElement FilterByAutomobilesTypes { get; set; }
