@@ -61,7 +61,7 @@ namespace CarsBg_HomePage
         [FindsBy(How = How.Id, Using = "filterOrderBy")]
         public IWebElement SortTheResultsBy { get; set; }
 
-        [FindsBy(How = How.CssSelector, Using = "html body table tbody tr td table tbody tr td table tbody tr td div#Container form#motoForm div.box-rounded table tbody tr td table tbody tr td div.bBoxT div.bBox")]
+        [FindsBy(How = How.CssSelector, Using = "html body table tbody tr td table tbody tr td table tbody tr td div#Container form#Form div.box-rounded table tbody tr td table tbody tr td center div.bBoxT div.bBox")]
         public IWebElement SearchButtonElement { get; set; }
 
         [FindsBy(How = How.CssSelector, Using = "html body table tbody tr td table tbody tr td table tbody tr td div#Container form#Form div.box-rounded table tbody tr td table tbody tr td a.link12orr")]

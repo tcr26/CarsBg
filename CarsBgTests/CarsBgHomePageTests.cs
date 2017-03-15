@@ -10,9 +10,9 @@ using CarsBg_HomePage;
 namespace CarsBg_HomePage_Tests
 {
     [TestClass]
-    public class CarsBgSearchResultsTests
+    public class CarsBgHomePageTests
     {
-        public CarsBgSearchResultsTests()
+        public CarsBgHomePageTests()
         {
             HomePage = new CarsBgHomePage();
             Driver = new FirefoxDriver();
