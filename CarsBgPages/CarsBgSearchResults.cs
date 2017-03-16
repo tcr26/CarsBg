@@ -58,6 +58,8 @@ namespace CarsBgSearch_Results
         [FindsBy(How = How.Id, Using = "filterOrderBy")]
         public IWebElement SortTheResultsBy { get; set; }
 
+        [FindsBy(How = How.XPath, Using = "/html/body/table[3]/tbody/tr[1]/td/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/form/div/table/tbody/tr[3]/td/table/tbody/tr/td[2]/center/div/div/a/b")]
+
         [FindsBy(How = How.XPath, Using = "/html/body/table[3]/tbody/tr[1]/td/table/tbody/tr[1]/td[1]/table/tbody/tr[1]/td/div/form/div/table/tbody/tr[3]/td/table/tbody/tr/td[2]/div/div/a/b")]
         public IWebElement SearchButtonElement { get; set; }
 
@@ -72,6 +74,15 @@ namespace CarsBgSearch_Results
 
         [FindsBy(How = How.ClassName, Using = "tableListResults")]
         public IWebElement SearchResultsElement { get; set; }
+
+        [FindsBy(How = How.CssSelector, Using = "tr.odd:nth-child(2) > td:nth-child(2) > a:nth-child(1) > span:nth-child(1) > b:nth-child(1)")]
+        public IWebElement FirstSearchResultElement { get; set; }
+
+        [FindsBy(How = How.CssSelector, Using = "tr.even:nth-child(3) > td:nth-child(2) > a:nth-child(1) > span:nth-child(1) > b:nth-child(1)")]
+        public IWebElement SecondSearchResultElement { get; set; }
+
+        [FindsBy(How = How.CssSelector, Using = "html body table tbody tr td table tbody tr td table.ver13black tbody tr td table tbody tr td span")]
+        public IWebElement DamagedAndSparePartsMessageElement { get; set; }
 
         [FindsBy(How = How.CssSelector, Using = ".ver13black > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2)")]
         public IWebElement YearOfProductionElement { get; set; }

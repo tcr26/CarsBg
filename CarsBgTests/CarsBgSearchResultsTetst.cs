@@ -90,6 +90,7 @@ namespace CarsBg_Search_Results_Tests
 
             Waiter.Until(ExpectedConditions.ElementIsVisible(By.Id("carsForm")));
 
+            SearchResults.SecondSearchResultElement.Click();
             var firstResultElement = Driver.FindElement(By.CssSelector("tr.odd:nth-child(2) > td:nth-child(2) > a:nth-child(1) > span:nth-child(1) > b:nth-child(1)"));
 
             var secondResultElement = Driver.FindElement(By.CssSelector("tr.even:nth-child(3) > td:nth-child(2) > a:nth-child(1) > span:nth-child(1) > b:nth-child(1)"));
@@ -114,6 +115,50 @@ namespace CarsBg_Search_Results_Tests
             //Console.WriteLine(SearchResults.CubicCentimeters.Text);
             //Console.WriteLine(SearchResults.NumberOfDoors.Text);
             //Console.WriteLine(SearchResults.CoupeColor.Text);
+        }
+
+        [Ignore]
+        [TestMethod]
+        public void SearchForSparePartsCars()
+        {
+            SearchResults.NewCars.Click();
+            SearchResults.UsedCars.Click();
+            SearchResults.SparePartsCars.Click();
+
+            SearchResults.SearchButtonElement.Click();
+
+            Waiter.Until(ExpectedConditions.ElementIsVisible(By.Id("carsForm")));
+
+            SearchResults.SecondSearchResultElement.Click();
+
+            Waiter.Until(ExpectedConditions.ElementIsVisible(By.CssSelector("html body table tbody tr td table tbody tr td table.ver13black tbody tr td table tbody tr td b")));
+
+            string expectedSparePartsMessage = "за части";
+            var actualSparePartsMessage = SearchResults.DamagedAndSparePartsMessageElement.Text;
+
+            Assert.AreEqual(expectedSparePartsMessage, actualSparePartsMessage);
+        }
+
+        [Ignore]
+        [TestMethod]
+        public void SearchForDamagedCars()
+        {
+            SearchResults.NewCars.Click();
+            SearchResults.UsedCars.Click();
+            SearchResults.DamagedCars.Click();
+
+            SearchResults.SearchButtonElement.Click();
+
+            Waiter.Until(ExpectedConditions.ElementIsVisible(By.Id("carsForm")));
+
+            SearchResults.FirstSearchResultElement.Click();
+
+            Waiter.Until(ExpectedConditions.ElementIsVisible(By.CssSelector("html body table tbody tr td table tbody tr td table.ver13black tbody tr td table tbody tr td b")));
+
+            string expectedSparePartsMessage = "повредени/ударени";
+            var actualSparePartsMessage = SearchResults.DamagedAndSparePartsMessageElement.Text;
+
+            Assert.AreEqual(expectedSparePartsMessage, actualSparePartsMessage);
         }
 
         [Ignore]
