@@ -50,13 +50,13 @@ namespace CarsBg_Search_Results_Tests
         {
             SearchResults.FilterByAutomobilesTypes.Click();
 
-            SearchResults.Select(SearchResults.FilterByAutomobilesTypes, "Мотори");
+            SearchResults.SelectOptionElement(SearchResults.FilterByAutomobilesTypes, "Мотори");
 
             Waiter.Until(ExpectedConditions.UrlToBe("http://www.cars.bg/?go=home&p=motori"));
 
             SearchResults.FilterByCoupes.Click();
 
-            SearchResults.Select(SearchResults.FilterByCoupes, "Моторна шейна");
+            SearchResults.SelectOptionElement(SearchResults.FilterByCoupes, "Моторна шейна");
 
             SearchResults.FilterByCarsFromPrice.SendKeys("1000");
             SearchResults.FilterByCarsToPrice.SendKeys("17000");
@@ -73,24 +73,24 @@ namespace CarsBg_Search_Results_Tests
             Assert.AreEqual(expectedChooseType, actualChooseType);
         }
 
-        //[Ignore]
+        [Ignore]
         [TestMethod]
         public void SearchForSedanFourDoorsGasoline()
         {
             SearchResults.FilterByCoupes.Click();
-            SearchResults.Select(SearchResults.FilterByCoupes, "Седан");
+            SearchResults.SelectOptionElement(SearchResults.FilterByCoupes, "Седан");
 
             SearchResults.FilterByDoorsCount.Click();
-            SearchResults.Select(SearchResults.FilterByDoorsCount, "4/5");
+            SearchResults.SelectOptionElement(SearchResults.FilterByDoorsCount, "4/5");
 
             SearchResults.FilterByFuelType.Click();
-            SearchResults.Select(SearchResults.FilterByFuelType, "Газ/Бензин");
+            SearchResults.SelectOptionElement(SearchResults.FilterByFuelType, "Газ/Бензин");
 
             SearchResults.SearchButtonElement.Click();
 
             Waiter.Until(ExpectedConditions.ElementIsVisible(By.Id("carsForm")));
 
-            //var firstResultElement = Driver.FindElement(By.CssSelector("tr.odd:nth-child(2) > td:nth-child(2) > a:nth-child(1) > span:nth-child(1) > b:nth-child(1)"));
+            var firstResultElement = Driver.FindElement(By.CssSelector("tr.odd:nth-child(2) > td:nth-child(2) > a:nth-child(1) > span:nth-child(1) > b:nth-child(1)"));
 
             var secondResultElement = Driver.FindElement(By.CssSelector("tr.even:nth-child(3) > td:nth-child(2) > a:nth-child(1) > span:nth-child(1) > b:nth-child(1)"));
 
@@ -120,18 +120,18 @@ namespace CarsBg_Search_Results_Tests
         [TestMethod]
         public void NoResultsFoundForSnowmobile()
         {
-            SearchResults.FilterByAutomobilesTypes.Click();
+            SearchResults.SelectOptionElement(SearchResults.FilterByAutomobilesTypes, "Мотори");
 
-            SearchResults.Select(SearchResults.FilterByAutomobilesTypes, "Мотори");
+            //SearchResults.SearchButtonElement.Click();
 
             Waiter.Until(ExpectedConditions.UrlToBe("http://www.cars.bg/?go=home&p=motori"));
 
             SearchResults.FilterByCoupes.Click();
 
-            SearchResults.Select(SearchResults.FilterByCoupes, "Моторна шейна");
+            SearchResults.SelectOptionElement(SearchResults.FilterByCoupes, "Моторна шейна");
 
-            SearchResults.FilterByCarsFromPrice.SendKeys("1000");
-            SearchResults.FilterByCarsToPrice.SendKeys("17000");
+            //SearchResults.FilterByCarsFromPrice.SendKeys("1");
+            SearchResults.FilterByCarsToPrice.SendKeys("1");
 
             SearchResults.UsedCars.Click();
 
