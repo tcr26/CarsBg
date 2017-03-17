@@ -55,16 +55,14 @@ namespace CarsBgSearch_Results
         [FindsBy(How = How.Id, Using = "PriceTo")]
         public IWebElement FilterByCarsToPrice { get; set; }
 
-        [FindsBy(How = How.Id, Using = "filterOrderBy")]
+        [FindsBy(How = How.XPath, Using = "/html/body/table[3]/tbody/tr[1]/td/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/form/div/table/tbody/tr[3]/td/table/tbody/tr/td[1]/select")]
         public IWebElement SortTheResultsBy { get; set; }
-
-        [FindsBy(How = How.XPath, Using = "/html/body/table[3]/tbody/tr[1]/td/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/form/div/table/tbody/tr[3]/td/table/tbody/tr/td[2]/center/div/div/a/b")]
-
-        [FindsBy(How = How.XPath, Using = "/html/body/table[3]/tbody/tr[1]/td/table/tbody/tr[1]/td[1]/table/tbody/tr[1]/td/div/form/div/table/tbody/tr[3]/td/table/tbody/tr/td[2]/div/div/a/b")]
-        public IWebElement SearchButtonElement { get; set; }
 
         [FindsBy(How = How.CssSelector, Using = "html body table tbody tr td table tbody tr td table tbody tr td div#Container form#Form div.box-rounded table tbody tr td table tbody tr td a.link12orr")]
         public IWebElement AdvancedSearchButtonElement { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "/html/body/table[3]/tbody/tr[1]/td/table/tbody/tr/td[1]/table/tbody/tr[1]/td/div/form/div/table/tbody/tr[3]/td/table/tbody/tr/td[2]/center/div/div/a/b")]
+        public IWebElement SearchButtonElement { get; set; }
 
         [FindsBy(How = How.Id, Using = "searchstrings")]
         public IWebElement SearchTermsElement { get; set; }

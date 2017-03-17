@@ -7,6 +7,8 @@ using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Firefox;
 using CarsBg_HomePage;
 using CarsBgSearch_Results;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CarsBg_Search_Results_Tests
 {
@@ -164,7 +166,7 @@ namespace CarsBg_Search_Results_Tests
             SearchResults.SelectOptionElement(SearchResults.FilterByCarsFromPrice, "от 1000");
 
             SearchResults.FilterByCarsToPrice.Click();
-            SearchResults.SelectOptionElement(SearchResults.FilterByCarsToPrice, "до 7000");
+            SearchResults.SelectOptionElement(SearchResults.FilterByCarsToPrice, "до 2000");
 
             SearchResults.SearchButtonElement.Click();
 
@@ -181,6 +183,39 @@ namespace CarsBg_Search_Results_Tests
             string expectedDoorsMessage = "2/3 врати";
             var actualDoorsMessage = SearchResults.NumberOfDoors.Text;
             Assert.AreEqual(expectedDoorsMessage, actualDoorsMessage);
+        }
+
+        //[Ignore]
+        [TestMethod]
+        public void PriceCheck()
+        {
+            SearchResults.FilterByCoupes.Click();
+            SearchResults.SelectOptionElement(SearchResults.FilterByCoupes, "Седан");
+
+            SearchResults.FilterByDoorsCount.Click();
+            SearchResults.SelectOptionElement(SearchResults.FilterByDoorsCount, "2/3");
+
+            SearchResults.FilterByFuelType.Click();
+            SearchResults.SelectOptionElement(SearchResults.FilterByFuelType, "Дизел");
+
+            SearchResults.FilterByCarsFromPrice.Click();
+            SearchResults.SelectOptionElement(SearchResults.FilterByCarsFromPrice, "от 1000");
+
+            SearchResults.FilterByCarsToPrice.Click();
+            SearchResults.SelectOptionElement(SearchResults.FilterByCarsToPrice, "до 2000");
+
+            SearchResults.SortTheResultsBy.Click();
+            SearchResults.SelectOptionElement(SearchResults.SortTheResultsBy, "Цена - най-ниска");
+
+            SearchResults.SearchButtonElement.Click();
+
+            Waiter.Until(ExpectedConditions.ElementIsVisible(By.Id("carsForm")));
+
+            IList<IWebElement> priceElement = Driver.FindElements(By.ClassName("ver20black"));
+
+            foreach (var items in priceElement)
+            {
+            }
         }
 
         [Ignore]
