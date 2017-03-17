@@ -91,11 +91,6 @@ namespace CarsBg_Search_Results_Tests
             Waiter.Until(ExpectedConditions.ElementIsVisible(By.Id("carsForm")));
 
             SearchResults.SecondSearchResultElement.Click();
-            var firstResultElement = Driver.FindElement(By.CssSelector("tr.odd:nth-child(2) > td:nth-child(2) > a:nth-child(1) > span:nth-child(1) > b:nth-child(1)"));
-
-            var secondResultElement = Driver.FindElement(By.CssSelector("tr.even:nth-child(3) > td:nth-child(2) > a:nth-child(1) > span:nth-child(1) > b:nth-child(1)"));
-
-            secondResultElement.Click();
 
             Waiter.Until(ExpectedConditions.ElementIsVisible(By.CssSelector("html body table tbody tr td table tbody tr td table.ver13black tbody tr td table tbody tr td b")));
 
@@ -106,15 +101,6 @@ namespace CarsBg_Search_Results_Tests
             string expectedDoorsMessage = "4/5 врати";
             var actualDoorsMessage = SearchResults.NumberOfDoors.Text;
             Assert.AreEqual(expectedDoorsMessage, actualDoorsMessage);
-
-            //Console.WriteLine(SearchResults.YearOfProductionElement.Text);
-            //Console.WriteLine(SearchResults.KilometersTraveled.Text);
-            //Console.WriteLine(SearchResults.FuelType.Text);
-            //Console.WriteLine(SearchResults.TransmissionType.Text);
-            //Console.WriteLine(SearchResults.HorsePower.Text);
-            //Console.WriteLine(SearchResults.CubicCentimeters.Text);
-            //Console.WriteLine(SearchResults.NumberOfDoors.Text);
-            //Console.WriteLine(SearchResults.CoupeColor.Text);
         }
 
         [Ignore]
@@ -159,6 +145,42 @@ namespace CarsBg_Search_Results_Tests
             var actualSparePartsMessage = SearchResults.DamagedAndSparePartsMessageElement.Text;
 
             Assert.AreEqual(expectedSparePartsMessage, actualSparePartsMessage);
+        }
+
+        [Ignore]
+        [TestMethod]
+        public void SearchForSedanThreeDoorsDiesel()
+        {
+            SearchResults.FilterByCoupes.Click();
+            SearchResults.SelectOptionElement(SearchResults.FilterByCoupes, "Седан");
+
+            SearchResults.FilterByDoorsCount.Click();
+            SearchResults.SelectOptionElement(SearchResults.FilterByDoorsCount, "2/3");
+
+            SearchResults.FilterByFuelType.Click();
+            SearchResults.SelectOptionElement(SearchResults.FilterByFuelType, "Дизел");
+
+            SearchResults.FilterByCarsFromPrice.Click();
+            SearchResults.SelectOptionElement(SearchResults.FilterByCarsFromPrice, "от 1000");
+
+            SearchResults.FilterByCarsToPrice.Click();
+            SearchResults.SelectOptionElement(SearchResults.FilterByCarsToPrice, "до 7000");
+
+            SearchResults.SearchButtonElement.Click();
+
+            Waiter.Until(ExpectedConditions.ElementIsVisible(By.Id("carsForm")));
+
+            SearchResults.FirstSearchResultElement.Click();
+
+            Waiter.Until(ExpectedConditions.ElementIsVisible(By.CssSelector("html body table tbody tr td table tbody tr td table.ver13black tbody tr td table tbody tr td b")));
+
+            string expectedFuelTypeMessage = "Дизел";
+            var actualFuelyTypeMessage = SearchResults.FuelType.Text;
+            Assert.AreEqual(expectedFuelTypeMessage, actualFuelyTypeMessage);
+
+            string expectedDoorsMessage = "2/3 врати";
+            var actualDoorsMessage = SearchResults.NumberOfDoors.Text;
+            Assert.AreEqual(expectedDoorsMessage, actualDoorsMessage);
         }
 
         [Ignore]
