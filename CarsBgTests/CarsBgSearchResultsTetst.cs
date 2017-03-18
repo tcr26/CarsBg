@@ -46,7 +46,7 @@ namespace CarsBg_Search_Results_Tests
             Driver.Dispose();
         }
 
-        //[Ignore]
+        [Ignore]
         [TestMethod]
         public void SearchForSnowmobile()
         {
@@ -75,7 +75,7 @@ namespace CarsBg_Search_Results_Tests
             Assert.AreEqual(expectedChooseType, actualChooseType);
         }
 
-        //[Ignore]
+        [Ignore]
         [TestMethod]
         public void SearchForSedanFourDoorsGasoline()
         {
@@ -105,7 +105,7 @@ namespace CarsBg_Search_Results_Tests
             Assert.AreEqual(expectedDoorsMessage, actualDoorsMessage);
         }
 
-        //[Ignore]
+        [Ignore]
         [TestMethod]
         public void SearchForSparePartsCars()
         {
@@ -127,7 +127,7 @@ namespace CarsBg_Search_Results_Tests
             Assert.AreEqual(expectedSparePartsMessage, actualSparePartsMessage);
         }
 
-        //[Ignore]
+        [Ignore]
         [TestMethod]
         public void SearchForDamagedCars()
         {
@@ -149,7 +149,7 @@ namespace CarsBg_Search_Results_Tests
             Assert.AreEqual(expectedSparePartsMessage, actualSparePartsMessage);
         }
 
-        //[Ignore]
+        [Ignore]
         [TestMethod]
         public void SearchForSedanThreeDoorsDiesel()
         {
@@ -185,7 +185,7 @@ namespace CarsBg_Search_Results_Tests
             Assert.AreEqual(expectedDoorsMessage, actualDoorsMessage);
         }
 
-        [Ignore]
+        //[Ignore]
         [TestMethod]
         public void PriceCheck()
         {
@@ -214,12 +214,13 @@ namespace CarsBg_Search_Results_Tests
 
             IList<IWebElement> priceElement = Driver.FindElements(By.ClassName("ver20black"));
 
-            foreach (var items in priceElement)
+            foreach (var item in priceElement)
             {
+                Console.WriteLine(item.Text);
             }
         }
 
-        //[Ignore]
+        [Ignore]
         [TestMethod]
         public void NoResultsFoundForSnowmobile()
         {

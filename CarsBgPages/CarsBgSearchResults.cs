@@ -73,6 +73,15 @@ namespace CarsBgSearch_Results
         [FindsBy(How = How.ClassName, Using = "tableListResults")]
         public IWebElement SearchResultsElement { get; set; }
 
+        [FindsBy(How = How.ClassName, Using = "ver15black")]
+        public IWebElement SearchResultSellLinkElement { get; set; }
+
+        [FindsBy(How = How.ClassName, Using = "year")]
+        public IWebElement SearchResultProductionYearElemement { get; set; }
+
+        [FindsBy(How = How.ClassName, Using = "ver20black")]
+        public IWebElement SearchResultPriceElement { get; set; }
+
         [FindsBy(How = How.CssSelector, Using = "tr.odd:nth-child(2) > td:nth-child(2) > a:nth-child(1) > span:nth-child(1) > b:nth-child(1)")]
         public IWebElement FirstSearchResultElement { get; set; }
 
