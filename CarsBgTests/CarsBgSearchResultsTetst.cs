@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support;
@@ -8,7 +9,6 @@ using OpenQA.Selenium.Firefox;
 using CarsBg_HomePage;
 using CarsBgSearch_Results;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace CarsBg_Search_Results_Tests
 {
@@ -189,7 +189,6 @@ namespace CarsBg_Search_Results_Tests
         [TestMethod]
         public void PriceCheck()
         {
-
             SearchResults.FilterByCoupes.Click();
             SearchResults.SelectOptionElement(SearchResults.FilterByCoupes, "Седан");
 
@@ -216,7 +215,17 @@ namespace CarsBg_Search_Results_Tests
 
             foreach (var item in priceElement)
             {
-                Console.WriteLine(item.Text);
+                var str = item.Text;
+
+                for (int i = 0; i < str.Length; i++)
+                {
+                    var parser = double.Parse(str, CultureInfo.InvariantCulture);
+
+                    if (parser < 1000 || parser > 2000)
+                    {
+                        Console.WriteLine("fail");
+                    }
+                }
             }
         }
 
