@@ -185,7 +185,7 @@ namespace CarsBg_Search_Results_Tests
             Assert.AreEqual(expectedDoorsMessage, actualDoorsMessage);
         }
 
-        //[Ignore]
+        [Ignore]
         [TestMethod]
         public void PriceCheck()
         {
@@ -215,15 +215,58 @@ namespace CarsBg_Search_Results_Tests
 
             foreach (var item in priceElement)
             {
-                var str = item.Text;
+                var priceTextElement = item.Text;
 
-                for (int i = 0; i < str.Length; i++)
+                var priceTextToNumber = double.Parse(priceTextElement, CultureInfo.InvariantCulture);
+
+                for (int i = 0; i < priceTextElement.Length; i++)
                 {
-                    var parser = double.Parse(str, CultureInfo.InvariantCulture);
-
-                    if (parser < 1000 || parser > 2000)
+                    if (priceTextToNumber < 1000 || priceTextToNumber > 2000)
                     {
-                        Console.WriteLine("fail");
+                        Assert.Fail("Prices out of range!");
+                    }
+                }
+            }
+        }
+
+        [Ignore]
+        [TestMethod]
+        public void YearCheck()
+        {
+            SearchResults.FilterByCoupes.Click();
+            SearchResults.SelectOptionElement(SearchResults.FilterByCoupes, "Седан");
+
+            SearchResults.FilterByDoorsCount.Click();
+            SearchResults.SelectOptionElement(SearchResults.FilterByDoorsCount, "2/3");
+
+            SearchResults.FilterByYearOfProduction.Click();
+            SearchResults.SelectOptionElement(SearchResults.FilterByYearOfProduction, "от 2011");
+
+            SearchResults.FilterByCarsFromPrice.Click();
+            SearchResults.SelectOptionElement(SearchResults.FilterByCarsFromPrice, "от 14000");
+
+            SearchResults.FilterByCarsToPrice.Click();
+            SearchResults.SelectOptionElement(SearchResults.FilterByCarsToPrice, "до 25000");
+
+            SearchResults.SearchButtonElement.Click();
+
+            Waiter.Until(ExpectedConditions.ElementIsVisible(By.Id("carsForm")));
+
+            IList<IWebElement> priceElement = Driver.FindElements(By.ClassName("year"));
+
+            foreach (var item in priceElement)
+            {
+                Console.WriteLine(item.Text);
+
+                var priceYearElement = item.Text;
+
+                var priceYearToNumber = int.Parse(priceYearElement, CultureInfo.InvariantCulture);
+
+                for (int i = 0; i < priceYearElement.Length; i++)
+                {
+                    if (priceYearToNumber < 2011)
+                    {
+                        Assert.Fail("Year if production out of range!");
                     }
                 }
             }
