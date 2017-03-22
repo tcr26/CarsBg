@@ -41,13 +41,13 @@ namespace CarsBg_Search_Results_Tests
         {
             SearchResults.FilterByAutomobilesTypes.Click();
 
-            SearchResults.SelectOptionElement(SearchResults.FilterByAutomobilesTypes, "Мотори");
+            SearchResults.SelectDropDownItem(SearchResults.FilterByAutomobilesTypes, "Мотори");
 
             Waiter.Until(ExpectedConditions.UrlToBe("http://www.cars.bg/?go=home&p=motori"));
 
             SearchResults.FilterByCoupes.Click();
 
-            SearchResults.SelectOptionElement(SearchResults.FilterByCoupes, "Моторна шейна");
+            SearchResults.SelectDropDownItem(SearchResults.FilterByCoupes, "Моторна шейна");
 
             SearchResults.FilterByCarsFromPrice.SendKeys("1000");
             SearchResults.FilterByCarsToPrice.SendKeys("17000");
@@ -69,13 +69,13 @@ namespace CarsBg_Search_Results_Tests
         public void SearchForSedanFourDoorsGasoline()
         {
             SearchResults.FilterByCoupes.Click();
-            SearchResults.SelectOptionElement(SearchResults.FilterByCoupes, "Седан");
+            SearchResults.SelectDropDownItem(SearchResults.FilterByCoupes, "Седан");
 
             SearchResults.FilterByDoorsCount.Click();
-            SearchResults.SelectOptionElement(SearchResults.FilterByDoorsCount, "4/5");
+            SearchResults.SelectDropDownItem(SearchResults.FilterByDoorsCount, "4/5");
 
             SearchResults.FilterByFuelType.Click();
-            SearchResults.SelectOptionElement(SearchResults.FilterByFuelType, "Газ/Бензин");
+            SearchResults.SelectDropDownItem(SearchResults.FilterByFuelType, "Газ/Бензин");
 
             SearchResults.SearchButtonElement.Click();
 
@@ -143,19 +143,19 @@ namespace CarsBg_Search_Results_Tests
         public void SearchForSedanThreeDoorsDiesel()
         {
             SearchResults.FilterByCoupes.Click();
-            SearchResults.SelectOptionElement(SearchResults.FilterByCoupes, "Седан");
+            SearchResults.SelectDropDownItem(SearchResults.FilterByCoupes, "Седан");
 
             SearchResults.FilterByDoorsCount.Click();
-            SearchResults.SelectOptionElement(SearchResults.FilterByDoorsCount, "2/3");
+            SearchResults.SelectDropDownItem(SearchResults.FilterByDoorsCount, "2/3");
 
             SearchResults.FilterByFuelType.Click();
-            SearchResults.SelectOptionElement(SearchResults.FilterByFuelType, "Дизел");
+            SearchResults.SelectDropDownItem(SearchResults.FilterByFuelType, "Дизел");
 
             SearchResults.FilterByCarsFromPrice.Click();
-            SearchResults.SelectOptionElement(SearchResults.FilterByCarsFromPrice, "от 1000");
+            SearchResults.SelectDropDownItem(SearchResults.FilterByCarsFromPrice, "от 1000");
 
             SearchResults.FilterByCarsToPrice.Click();
-            SearchResults.SelectOptionElement(SearchResults.FilterByCarsToPrice, "до 2000");
+            SearchResults.SelectDropDownItem(SearchResults.FilterByCarsToPrice, "до 2000");
 
             SearchResults.SearchButtonElement.Click();
 
@@ -179,22 +179,19 @@ namespace CarsBg_Search_Results_Tests
         public void PriceCheck()
         {
             SearchResults.FilterByCoupes.Click();
-            SearchResults.SelectOptionElement(SearchResults.FilterByCoupes, "Седан");
+            SearchResults.SelectDropDownItem(SearchResults.FilterByCoupes, "Седан");
 
             SearchResults.FilterByDoorsCount.Click();
-            SearchResults.SelectOptionElement(SearchResults.FilterByDoorsCount, "2/3");
+            SearchResults.SelectDropDownItem(SearchResults.FilterByDoorsCount, "2/3");
 
             SearchResults.FilterByFuelType.Click();
-            SearchResults.SelectOptionElement(SearchResults.FilterByFuelType, "Дизел");
+            SearchResults.SelectDropDownItem(SearchResults.FilterByFuelType, "Дизел");
 
             SearchResults.FilterByCarsFromPrice.Click();
-            SearchResults.SelectOptionElement(SearchResults.FilterByCarsFromPrice, "от 1000");
+            SearchResults.SelectDropDownItem(SearchResults.FilterByCarsFromPrice, "от 1000");
 
             SearchResults.FilterByCarsToPrice.Click();
-            SearchResults.SelectOptionElement(SearchResults.FilterByCarsToPrice, "до 2000");
-
-            SearchResults.SortTheResultsBy.Click();
-            SearchResults.SelectOptionElement(SearchResults.SortTheResultsBy, "Цена - най-ниска");
+            SearchResults.SelectDropDownItem(SearchResults.FilterByCarsToPrice, "до 2000");
 
             SearchResults.SearchButtonElement.Click();
 
@@ -210,10 +207,7 @@ namespace CarsBg_Search_Results_Tests
 
                 for (int i = 0; i < priceTextElement.Length; i++)
                 {
-                    if (priceTextToNumber < 1000 || priceTextToNumber > 2000)
-                    {
-                        Assert.Fail("Prices out of range!");
-                    }
+                    Assert.IsTrue(priceTextToNumber >= 1000 && priceTextToNumber <= 2000, "Prices are between 1000 and 2000");
                 }
             }
         }
@@ -223,19 +217,19 @@ namespace CarsBg_Search_Results_Tests
         public void YearCheck()
         {
             SearchResults.FilterByCoupes.Click();
-            SearchResults.SelectOptionElement(SearchResults.FilterByCoupes, "Седан");
+            SearchResults.SelectDropDownItem(SearchResults.FilterByCoupes, "Седан");
 
             SearchResults.FilterByDoorsCount.Click();
-            SearchResults.SelectOptionElement(SearchResults.FilterByDoorsCount, "2/3");
+            SearchResults.SelectDropDownItem(SearchResults.FilterByDoorsCount, "2/3");
 
             SearchResults.FilterByYearOfProduction.Click();
-            SearchResults.SelectOptionElement(SearchResults.FilterByYearOfProduction, "от 2011");
+            SearchResults.SelectDropDownItem(SearchResults.FilterByYearOfProduction, "от 2011");
 
             SearchResults.FilterByCarsFromPrice.Click();
-            SearchResults.SelectOptionElement(SearchResults.FilterByCarsFromPrice, "от 14000");
+            SearchResults.SelectDropDownItem(SearchResults.FilterByCarsFromPrice, "от 14000");
 
             SearchResults.FilterByCarsToPrice.Click();
-            SearchResults.SelectOptionElement(SearchResults.FilterByCarsToPrice, "до 25000");
+            SearchResults.SelectDropDownItem(SearchResults.FilterByCarsToPrice, "до 25000");
 
             SearchResults.SearchButtonElement.Click();
 
@@ -251,10 +245,7 @@ namespace CarsBg_Search_Results_Tests
 
                 for (int i = 0; i < priceYearElement.Length; i++)
                 {
-                    if (priceYearToNumber < 2011)
-                    {
-                        Assert.Fail("Year if production out of range!");
-                    }
+                    Assert.IsTrue(priceYearToNumber >= 2011, "Year of production is incorrect");
                 }
             }
         }
@@ -263,7 +254,7 @@ namespace CarsBg_Search_Results_Tests
         [TestMethod]
         public void NoResultsFoundForSnowmobile()
         {
-            SearchResults.SelectOptionElement(SearchResults.FilterByAutomobilesTypes, "Мотори");
+            SearchResults.SelectDropDownItem(SearchResults.FilterByAutomobilesTypes, "Мотори");
 
             //SearchResults.SearchButtonElement.Click();
 
@@ -271,7 +262,7 @@ namespace CarsBg_Search_Results_Tests
 
             SearchResults.FilterByCoupes.Click();
 
-            SearchResults.SelectOptionElement(SearchResults.FilterByCoupes, "Моторна шейна");
+            SearchResults.SelectDropDownItem(SearchResults.FilterByCoupes, "Моторна шейна");
 
             //SearchResults.FilterByCarsFromPrice.SendKeys("1");
             SearchResults.FilterByCarsToPrice.SendKeys("1");

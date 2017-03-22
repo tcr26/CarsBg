@@ -120,7 +120,7 @@ namespace CarsBgSearch_Results
         [FindsBy(How = How.XPath, Using = "/html/body/table[3]/tbody/tr[1]/td/form/table/tbody/tr/td[1]/table[4]/tbody/tr[2]/td/table/tbody/tr[2]/td")]
         public IWebElement NoResultsFoundElement { get; set; }
 
-        public void SelectOptionElement(IWebElement element, string option)
+        public void SelectDropDownItem(IWebElement element, string option)
         {
             SelectElement selectedElement = new SelectElement(element);
             selectedElement.SelectByText(option);
