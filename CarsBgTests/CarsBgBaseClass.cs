@@ -17,7 +17,6 @@ namespace CarsBg_BaseClass
             Driver.Manage().Window.Maximize();
             Waiter = new WebDriverWait(Driver, TimeSpan.FromSeconds(20));
             HomePage = new CarsBgHomePage();
-            Driver.Navigate().GoToUrl(HomePage.urlToCarsBgHomePage);
         }
 
         protected IWebDriver Driver { get; set; }

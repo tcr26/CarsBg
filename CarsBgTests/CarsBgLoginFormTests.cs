@@ -25,6 +25,7 @@ namespace CarsBg_Login_Form_Tests
         public void TestInit()
         {
             PageFactory.InitElements(Driver, LoginForm);
+            Driver.Navigate().GoToUrl(HomePage.urlToCarsBgHomePage);
         }
 
         [TestCleanup]
@@ -33,7 +34,6 @@ namespace CarsBg_Login_Form_Tests
             Driver.Dispose();
         }
 
-        [Ignore]
         [TestMethod]
         public void LoginFormPrivateSellerCredentialError()
         {
@@ -51,7 +51,6 @@ namespace CarsBg_Login_Form_Tests
             Assert.AreEqual(expectedMessage, actualsErrorMessage);
         }
 
-        [Ignore]
         [TestMethod]
         public void LoginFormCompanyCredentialError()
         {

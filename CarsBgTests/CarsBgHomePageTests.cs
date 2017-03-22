@@ -22,6 +22,7 @@ namespace CarsBg_HomePage_Tests
         public void TestInit()
         {
             PageFactory.InitElements(Driver, HomePage);
+            Driver.Navigate().GoToUrl(HomePage.urlToCarsBgHomePage);
         }
 
         [TestCleanup]
@@ -30,7 +31,6 @@ namespace CarsBg_HomePage_Tests
             Driver.Dispose();
         }
 
-        [Ignore]
         [TestMethod]
         public void GoToCarsBgHomePage()
         {

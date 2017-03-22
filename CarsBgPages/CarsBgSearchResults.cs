@@ -71,7 +71,7 @@ namespace CarsBgSearch_Results
         public IWebElement NumbersOfSearchResultsElements { get; set; }
 
         [FindsBy(How = How.ClassName, Using = "tableListResults")]
-        public IWebElement SearchResultsElement { get; set; }
+        public IWebElement SearchResultsElements { get; set; }
 
         [FindsBy(How = How.ClassName, Using = "ver15black")]
         public IWebElement SearchResultSellLinkElement { get; set; }
@@ -122,6 +122,7 @@ namespace CarsBgSearch_Results
 
         public void SelectDropDownItem(IWebElement element, string option)
         {
+            element.Click();
             SelectElement selectedElement = new SelectElement(element);
             selectedElement.SelectByText(option);
         }
