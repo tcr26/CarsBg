@@ -6,26 +6,17 @@ using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Firefox;
 using CarsBg_HomePage;
+using CarsBg_BaseClass;
 
 namespace CarsBg_HomePage_Tests
 {
     [TestClass]
-    public class CarsBgHomePageTests
+    public class CarsBgHomePageTests : CarsBgBaseClass
     {
         public CarsBgHomePageTests()
         {
-            HomePage = new CarsBgHomePage();
-            Driver = new FirefoxDriver();
-            Driver.Manage().Window.Maximize();
-            Waiter = new WebDriverWait(Driver, TimeSpan.FromSeconds(20));
-            Driver.Navigate().GoToUrl(HomePage.urlToCarsBgHomePage);
         }
 
-        public CarsBgHomePage HomePage { get; set; }
-
-        public IWebDriver Driver { get; set; }
-
-        public WebDriverWait Waiter { get; set; }
 
         [TestInitialize]
         public void TestInit()
@@ -39,7 +30,7 @@ namespace CarsBg_HomePage_Tests
             Driver.Dispose();
         }
 
-        //[Ignore]
+        [Ignore]
         [TestMethod]
         public void GoToCarsBgHomePage()
         {

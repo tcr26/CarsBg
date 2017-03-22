@@ -1,42 +1,31 @@
 ﻿using System;
 using System.Globalization;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Firefox;
-using CarsBg_HomePage;
+using CarsBg_BaseClass;
 using CarsBgSearch_Results;
-using System.Collections.Generic;
+
 
 namespace CarsBg_Search_Results_Tests
 {
     [TestClass]
-    public class CarsBgSearchResultsTests
+    public class CarsBgSearchResultsTests : CarsBgBaseClass
     {
         public CarsBgSearchResultsTests()
         {
-            HomePage = new CarsBgHomePage();
             SearchResults = new CarsBgSearchResults();
-            Driver = new FirefoxDriver();
-            Driver.Manage().Window.Maximize();
-            Waiter = new WebDriverWait(Driver, TimeSpan.FromSeconds(20));
-            Driver.Navigate().GoToUrl(SearchResults.urlToCarsBgHomePage);
         }
 
-        public CarsBgHomePage HomePage { get; set; }
-
         public CarsBgSearchResults SearchResults { get; set; }
-
-        public IWebDriver Driver { get; set; }
-
-        public WebDriverWait Waiter { get; set; }
 
         [TestInitialize]
         public void TestInit()
         {
-            PageFactory.InitElements(Driver, HomePage);
             PageFactory.InitElements(Driver, SearchResults);
         }
 
@@ -46,7 +35,7 @@ namespace CarsBg_Search_Results_Tests
             Driver.Dispose();
         }
 
-        //[Ignore]
+        [Ignore]
         [TestMethod]
         public void SearchForSnowmobile()
         {
@@ -75,7 +64,7 @@ namespace CarsBg_Search_Results_Tests
             Assert.AreEqual(expectedChooseType, actualChooseType);
         }
 
-        //[Ignore]
+        [Ignore]
         [TestMethod]
         public void SearchForSedanFourDoorsGasoline()
         {
@@ -105,7 +94,7 @@ namespace CarsBg_Search_Results_Tests
             Assert.AreEqual(expectedDoorsMessage, actualDoorsMessage);
         }
 
-        //[Ignore]
+        [Ignore]
         [TestMethod]
         public void SearchForSparePartsCars()
         {
@@ -127,7 +116,7 @@ namespace CarsBg_Search_Results_Tests
             Assert.AreEqual(expectedSparePartsMessage, actualSparePartsMessage);
         }
 
-        //[Ignore]
+        [Ignore]
         [TestMethod]
         public void SearchForDamagedCars()
         {
@@ -149,7 +138,7 @@ namespace CarsBg_Search_Results_Tests
             Assert.AreEqual(expectedSparePartsMessage, actualSparePartsMessage);
         }
 
-        //[Ignore]
+        [Ignore]
         [TestMethod]
         public void SearchForSedanThreeDoorsDiesel()
         {
@@ -185,7 +174,7 @@ namespace CarsBg_Search_Results_Tests
             Assert.AreEqual(expectedDoorsMessage, actualDoorsMessage);
         }
 
-        //[Ignore]
+        [Ignore]
         [TestMethod]
         public void PriceCheck()
         {
@@ -229,7 +218,7 @@ namespace CarsBg_Search_Results_Tests
             }
         }
 
-        //[Ignore]
+        [Ignore]
         [TestMethod]
         public void YearCheck()
         {
@@ -270,7 +259,7 @@ namespace CarsBg_Search_Results_Tests
             }
         }
 
-        //[Ignore]
+        [Ignore]
         [TestMethod]
         public void NoResultsFoundForSnowmobile()
         {

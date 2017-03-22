@@ -5,36 +5,25 @@ using OpenQA.Selenium.Support;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Firefox;
-using CarsBg_HomePage;
+using CarsBg_BaseClass;
 using CarsBg_Login_Form;
 
 namespace CarsBg_Login_Form_Tests
 {
     [TestClass]
-    public class CarsBgLoginFormTests
+    public class CarsBgLoginFormTests : CarsBgBaseClass
     {
         public CarsBgLoginFormTests()
         {
-            CarsBgHomePage = new CarsBgHomePage();
             LoginForm = new CarsBgLoginForm();
-            Driver = new FirefoxDriver();
-            Driver.Manage().Window.Maximize();
-            Waiter = new WebDriverWait(Driver, TimeSpan.FromSeconds(20));
-            Driver.Navigate().GoToUrl(LoginForm.urlToCarsBgHomePage);
         }
 
-        public CarsBgHomePage CarsBgHomePage { get; set; }
 
         public CarsBgLoginForm LoginForm { get; set; }
-
-        public IWebDriver Driver { get; set; }
-
-        public WebDriverWait Waiter { get; set; }
 
         [TestInitialize]
         public void TestInit()
         {
-            PageFactory.InitElements(Driver, CarsBgHomePage);
             PageFactory.InitElements(Driver, LoginForm);
         }
 
@@ -44,7 +33,7 @@ namespace CarsBg_Login_Form_Tests
             Driver.Dispose();
         }
 
-        //[Ignore]
+        [Ignore]
         [TestMethod]
         public void LoginFormPrivateSellerCredentialError()
         {
@@ -62,7 +51,7 @@ namespace CarsBg_Login_Form_Tests
             Assert.AreEqual(expectedMessage, actualsErrorMessage);
         }
 
-        //[Ignore]
+        [Ignore]
         [TestMethod]
         public void LoginFormCompanyCredentialError()
         {
