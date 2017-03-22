@@ -44,7 +44,7 @@ namespace CarsBg_Login_Form_Tests
             Driver.Dispose();
         }
 
-        [Ignore]
+        //[Ignore]
         [TestMethod]
         public void LoginFormPrivateSellerCredentialError()
         {
@@ -62,7 +62,7 @@ namespace CarsBg_Login_Form_Tests
             Assert.AreEqual(expectedMessage, actualsErrorMessage);
         }
 
-        [Ignore]
+        //[Ignore]
         [TestMethod]
         public void LoginFormCompanyCredentialError()
         {

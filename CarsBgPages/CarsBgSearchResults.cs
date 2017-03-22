@@ -88,6 +88,8 @@ namespace CarsBgSearch_Results
         [FindsBy(How = How.CssSelector, Using = "tr.even:nth-child(3) > td:nth-child(2) > a:nth-child(1) > span:nth-child(1) > b:nth-child(1)")]
         public IWebElement SecondSearchResultElement { get; set; }
 
+        public string vehicleInformationElement = "carsForm";
+
         [FindsBy(How = How.CssSelector, Using = "html body table tbody tr td table tbody tr td table.ver13black tbody tr td table tbody tr td span")]
         public IWebElement DamagedAndSparePartsMessageElement { get; set; }
 

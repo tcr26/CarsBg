@@ -39,7 +39,7 @@ namespace CarsBg_HomePage_Tests
             Driver.Dispose();
         }
 
-        [Ignore]
+        //[Ignore]
         [TestMethod]
         public void GoToCarsBgHomePage()
         {
