@@ -119,7 +119,7 @@ namespace CarsBg_Search_Results_Tests
 
             Waiter.Until(ExpectedConditions.ElementIsVisible(By.Id(SearchResults.vehicleInformationElement)));
 
-            SearchResults.FirstSearchResultElement.Click();
+            SearchResults.SecondSearchResultElement.Click();
 
             Waiter.Until(ExpectedConditions.ElementIsVisible(By.CssSelector("html body table tbody tr td table tbody tr td table.ver13black tbody tr td table tbody tr td b")));
 
@@ -141,7 +141,7 @@ namespace CarsBg_Search_Results_Tests
 
             Waiter.Until(ExpectedConditions.ElementIsVisible(By.Id(SearchResults.vehicleInformationElement)));
 
-            SearchResults.FirstSearchResultElement.Click();
+            SearchResults.SecondSearchResultElement.Click();
 
             Waiter.Until(ExpectedConditions.ElementIsVisible(By.CssSelector("html body table tbody tr td table tbody tr td table.ver13black tbody tr td table tbody tr td b")));
 
@@ -162,7 +162,7 @@ namespace CarsBg_Search_Results_Tests
             SearchResults.SelectDropDownItem(SearchResults.FilterByFuelType, "Дизел");
             SearchResults.SelectDropDownItem(SearchResults.FilterByCarsFromPrice, "от 1000");
 
-            // TODO: stale exception fix to be added
+            // TODO: stale exception fix to be added            
             SearchResults.SelectDropDownItem(SearchResults.FilterByCarsToPrice, "до 2000");
 
             SearchResults.SearchButtonElement.Click();
@@ -177,7 +177,7 @@ namespace CarsBg_Search_Results_Tests
                 var priceTextElement = item.Text;
                 var actualPrice = double.Parse(priceTextElement, CultureInfo.InvariantCulture);
 
-                Assert.IsTrue(actualPrice >= 1000 && actualPrice <= 2000, "Prices are between 1000 and 2000");
+                Assert.IsTrue(actualPrice >= 1000 && actualPrice <= 2000, "Prices are not between 1000 and 2000");
             }
         }
 
