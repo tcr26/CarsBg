@@ -4,7 +4,7 @@ using OpenQA.Selenium.Support;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
 
-namespace CarsBgSearch_Results
+namespace CarsBgPages.SearchResults
 {
     public class CarsBgSearchResults
     {

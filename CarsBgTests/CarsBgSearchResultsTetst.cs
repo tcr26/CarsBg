@@ -7,14 +7,14 @@ using OpenQA.Selenium.Support;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Firefox;
-using CarsBg_BaseClass;
-using CarsBgSearch_Results;
+using CarsBgTestsBase;
+using CarsBgPages.SearchResults;
 
 
 namespace CarsBg_Search_Results_Tests
 {
     [TestClass]
-    public class CarsBgSearchResultsTests : CarsBgBaseClass
+    public class CarsBgSearchResultsTests : CarsBgBase
     {
         public CarsBgSearchResultsTests()
         {
@@ -58,16 +58,15 @@ namespace CarsBg_Search_Results_Tests
 
             Waiter.Until(ExpectedConditions.ElementIsVisible(By.Id("searchstrings")));
 
-            var expectedChooseType = "Търсене: Секция: Мотори; Цена: от 1000 до 17000 ЛЕВА; Тип: Моторна шейна; Обяви за: Нови; Обяви от: Автокъщи/Търговци и частни лица, Официални вносители Промени търсенето";
-            var actualChooseType = SearchResults.SearchTermsElement.Text;
+            var expectedSearchResultSummary = "Търсене: Секция: Мотори; Цена: от 1000 до 17000 ЛЕВА; Тип: Моторна шейна; Обяви за: Нови; Обяви от: Автокъщи/Търговци и частни лица, Официални вносители Промени търсенето";
+            var actualSearchResultSummary = SearchResults.SearchTermsElement.Text;
 
-            Assert.AreEqual(expectedChooseType, actualChooseType);
+            Assert.AreEqual(expectedSearchResultSummary, actualSearchResultSummary);
         }
 
         [TestMethod]
-        public void SearchForSedanFourDoorsGasoline()
+        public void SearchForFourDoorsGasoline()
         {
-            SearchResults.SelectDropDownItem(SearchResults.FilterByCoupes, "Седан");
             SearchResults.SelectDropDownItem(SearchResults.FilterByDoorsCount, "4/5");
             SearchResults.SelectDropDownItem(SearchResults.FilterByFuelType, "Газ/Бензин");
             SearchResults.SearchButtonElement.Click();
@@ -93,7 +92,6 @@ namespace CarsBg_Search_Results_Tests
             SearchResults.NewCars.Click();
             SearchResults.UsedCars.Click();
             SearchResults.SparePartsCars.Click();
-
             SearchResults.SearchButtonElement.Click();
 
             Waiter.Until(ExpectedConditions.ElementIsVisible(By.Id(SearchResults.vehicleInformationElement)));
@@ -114,7 +112,6 @@ namespace CarsBg_Search_Results_Tests
             SearchResults.NewCars.Click();
             SearchResults.UsedCars.Click();
             SearchResults.DamagedCars.Click();
-
             SearchResults.SearchButtonElement.Click();
 
             Waiter.Until(ExpectedConditions.ElementIsVisible(By.Id(SearchResults.vehicleInformationElement)));
@@ -123,16 +120,15 @@ namespace CarsBg_Search_Results_Tests
 
             Waiter.Until(ExpectedConditions.ElementIsVisible(By.CssSelector("html body table tbody tr td table tbody tr td table.ver13black tbody tr td table tbody tr td b")));
 
-            string expectedSparePartsMessage = "повредени/ударени";
-            var actualSparePartsMessage = SearchResults.DamagedAndSparePartsMessageElement.Text;
+            string expectedDamagesCarsMessage = "повредени/ударени";
+            var actualDamagedCarsMessage = SearchResults.DamagedAndSparePartsMessageElement.Text;
 
-            Assert.AreEqual(expectedSparePartsMessage, actualSparePartsMessage);
+            Assert.AreEqual(expectedDamagesCarsMessage, actualDamagedCarsMessage);
         }
 
         [TestMethod]
-        public void SearchForSedanThreeDoorsDiesel()
+        public void SearchForThreeDoorsDiesel()
         {
-            SearchResults.SelectDropDownItem(SearchResults.FilterByCoupes, "Седан");
             SearchResults.SelectDropDownItem(SearchResults.FilterByDoorsCount, "2/3");
             SearchResults.SelectDropDownItem(SearchResults.FilterByFuelType, "Дизел");
             SearchResults.SelectDropDownItem(SearchResults.FilterByCarsFromPrice, "от 1000");
@@ -155,16 +151,13 @@ namespace CarsBg_Search_Results_Tests
         }
 
         [TestMethod]
-        public void PriceCheck()
+        public void CheckPricesInSearchResults()
         {
             SearchResults.SelectDropDownItem(SearchResults.FilterByCoupes, "Седан");
             SearchResults.SelectDropDownItem(SearchResults.FilterByDoorsCount, "2/3");
             SearchResults.SelectDropDownItem(SearchResults.FilterByFuelType, "Дизел");
             SearchResults.SelectDropDownItem(SearchResults.FilterByCarsFromPrice, "от 1000");
-
-            // TODO: stale exception fix to be added            
             SearchResults.SelectDropDownItem(SearchResults.FilterByCarsToPrice, "до 2000");
-
             SearchResults.SearchButtonElement.Click();
 
             Waiter.Until(ExpectedConditions.ElementIsVisible(By.Id(SearchResults.vehicleInformationElement)));
@@ -182,7 +175,7 @@ namespace CarsBg_Search_Results_Tests
         }
 
         [TestMethod]
-        public void YearCheck()
+        public void CheckYearOfProductionInSearchResults()
         {
             SearchResults.SelectDropDownItem(SearchResults.FilterByCoupes, "Седан");
             SearchResults.SelectDropDownItem(SearchResults.FilterByDoorsCount, "2/3");
@@ -226,9 +219,9 @@ namespace CarsBg_Search_Results_Tests
 
             Waiter.Until(ExpectedConditions.ElementIsVisible(By.Id("searchstrings")));
 
-            string expectedPagesMessage = "1-0 от 0 оферти";
-            string actualPagesMessage = SearchResults.NumbersOfSearchResultsElements.Text;
-            Assert.AreEqual(expectedPagesMessage, actualPagesMessage);
+            string expectedNumberOFResultsMessage = "1-0 от 0 оферти";
+            string actualNumberOfResultsMessage = SearchResults.NumbersOfSearchResultsElements.Text;
+            Assert.AreEqual(expectedNumberOFResultsMessage, actualNumberOfResultsMessage);
 
             var expectedNotFoundMessage = "Няма намерени резултати";
             var actualNotFoundMessage = SearchResults.NoResultsFoundElement.Text;

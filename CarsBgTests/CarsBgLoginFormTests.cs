@@ -5,13 +5,13 @@ using OpenQA.Selenium.Support;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Firefox;
-using CarsBg_BaseClass;
-using CarsBg_Login_Form;
+using CarsBgTestsBase;
+using CarsBgPages.LoginForm;
 
-namespace CarsBg_Login_Form_Tests
+namespace CarsBgTests.LoginFormTests
 {
     [TestClass]
-    public class CarsBgLoginFormTests : CarsBgBaseClass
+    public class CarsBgLoginFormTests : CarsBgBase
     {
         public CarsBgLoginFormTests()
         {
@@ -38,34 +38,30 @@ namespace CarsBg_Login_Form_Tests
         public void LoginFormPrivateSellerCredentialError()
         {
             LoginForm.CarsBgLoginButtonElement.Click();
-
             LoginForm.CarsBgLoginFormPrivateSeller.Click();
-
             LoginForm.LoginToAccountButton.Click();
 
             Waiter.Until(ExpectedConditions.ElementIsVisible(By.ClassName("error")));
 
-            string expectedMessage = "Грешен телефон или\r\nпарола";
+            string expectedErrorMessage = "Грешен телефон или\r\nпарола";
             var actualsErrorMessage = LoginForm.LoginErrorElement.Text;
 
-            Assert.AreEqual(expectedMessage, actualsErrorMessage);
+            Assert.AreEqual(expectedErrorMessage, actualsErrorMessage);
         }
 
         [TestMethod]
         public void LoginFormCompanyCredentialError()
         {
             LoginForm.CarsBgLoginButtonElement.Click();
-
             LoginForm.CarsBgLoginFormCompany.Click();
-
             LoginForm.LoginToAccountButton.Click();
 
             Waiter.Until(ExpectedConditions.ElementIsVisible(By.ClassName("error")));
 
-            string expectedMessage = "Грешен потребител или\r\nпарола";
-            var actualMessage = LoginForm.LoginErrorElement.Text;
+            string expectedErrorMessage = "Грешен потребител или\r\nпарола";
+            var actualErrorMessage = LoginForm.LoginErrorElement.Text;
 
-            Assert.AreEqual(expectedMessage, actualMessage);
+            Assert.AreEqual(expectedErrorMessage, actualErrorMessage);
         }
     }
 }

@@ -4,14 +4,13 @@ using OpenQA.Selenium.Support;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.PageObjects;
-using CarsBg_HomePage;
+using CarsBgPages.HomePage;
 
-
-namespace CarsBg_BaseClass
+namespace CarsBgTestsBase
 {
-    public abstract class CarsBgBaseClass
+    public abstract class CarsBgBase
     {
-        public CarsBgBaseClass()
+        public CarsBgBase()
         {
             Driver = new FirefoxDriver();
             Driver.Manage().Window.Maximize();

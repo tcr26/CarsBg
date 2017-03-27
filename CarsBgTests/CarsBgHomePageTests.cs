@@ -5,18 +5,14 @@ using OpenQA.Selenium.Support;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Firefox;
-using CarsBg_HomePage;
-using CarsBg_BaseClass;
+using CarsBgTestsBase;
+using CarsBgPages.HomePage;
 
-namespace CarsBg_HomePage_Tests
+namespace CarsBgTests.HomePageTests
 {
     [TestClass]
-    public class CarsBgHomePageTests : CarsBgBaseClass
+    public class CarsBgHomePageTests : CarsBgBase
     {
-        public CarsBgHomePageTests()
-        {
-        }
-
 
         [TestInitialize]
         public void TestInit()

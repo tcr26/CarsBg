@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support;
 using OpenQA.Selenium.Support.PageObjects;
 
-namespace CarsBg_Login_Form
+namespace CarsBgPages.LoginForm
 {
     public class CarsBgLoginForm
     {
